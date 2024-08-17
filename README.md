@@ -13,7 +13,7 @@ Expense Tracker is a simple and intuitive Android application to manage your fin
 
 ### Home Screen
 
-![Home Screen](screenshots/home_screen.png)
+![Home Screen](/homescreen.png)
 
 *Welcome screen showing the user's name, total balance, and options to view income and expenses.*
 
