@@ -36,7 +36,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/expensetracker.git
+    git clone (https://github.com/itshimelz/Expense-Tracker.git)
     ```
 2. **Open the project in Android Studio**:
     - File -> Open -> Select the cloned directory.
@@ -53,6 +53,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 ## Contact
 
 **Rahat Hossain Himel**  
-- GitHub: [yourusername](https://github.com/yourusername)
+- GitHub: [Rahat H. Himel](https://github.com/itshimelz)
 - Email: himelhasan1215@gmail.com
 
