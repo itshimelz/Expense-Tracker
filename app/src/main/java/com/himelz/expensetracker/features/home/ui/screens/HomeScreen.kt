@@ -232,7 +232,7 @@ fun TransactionList(modifier: Modifier = Modifier) {
         // Sample transactions data
         val transactions = listOf(
             Transaction("Upwork", R.drawable.ic_upwork, "+ $850.00", Zinc, "Today"),
-            Transaction("Transfer", R.drawable.ic_spotify, "- $85.00", Color.Red, "Yesterday"),
+            Transaction("Spotify", R.drawable.ic_spotify, "- $85.00", Color.Red, "Yesterday"),
             Transaction("Paypal", R.drawable.ic_paypal, "+ $1,406.00", Zinc, "Jan 30, 2022"),
             Transaction("Youtube", R.drawable.ic_youtube, "- $11.99", Color.Red, "Jan 16, 2022"),
             Transaction("Netflix", R.drawable.ic_netflix, "- $15.99", Color.Red, "Aug 10, 2023"),
