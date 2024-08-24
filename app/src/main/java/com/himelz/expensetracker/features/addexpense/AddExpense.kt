@@ -59,6 +59,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -84,7 +85,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddExpense() {
     Surface {
@@ -164,7 +164,6 @@ fun AddExpense() {
 @Composable
 fun DataForm(modifier: Modifier) {
     var amount by remember { mutableStateOf("") }
-    var date by remember { mutableStateOf("") }
     var invoice by remember { mutableStateOf("") }
     var showDatePicker by remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState()
@@ -263,15 +262,17 @@ fun DataForm(modifier: Modifier) {
             if (showDatePicker) {
                 Popup(
                     onDismissRequest = { showDatePicker = false },
-                    alignment = Alignment.TopStart
+                    alignment = Alignment.TopStart,
                 ) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .offset(y = 64.dp)
+                            .padding(horizontal = 20.dp)
                             .shadow(elevation = 4.dp)
+                            .clip(RoundedCornerShape(12.dp))
                             .background(MaterialTheme.colorScheme.surface)
                             .padding(16.dp)
+
                     ) {
                         DatePicker(
                             state = datePickerState,
@@ -296,11 +297,6 @@ fun DataForm(modifier: Modifier) {
         }
     }
 
-}
-
-fun convertMillisToDate(millis: Long): String {
-    val formatter = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
-    return formatter.format(Date(millis))
 }
 
 @Composable
@@ -434,6 +430,10 @@ fun CustomDropdownMenuItem(
     }
 }
 
+fun convertMillisToDate(millis: Long): String {
+    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    return formatter.format(Date(millis))
+}
 
 @Preview(
     showSystemUi = true

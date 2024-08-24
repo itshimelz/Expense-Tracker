@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
+//    id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -41,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
     packaging {
         resources {
@@ -60,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,8 +72,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.material.icons.extended)
+
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
-    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.room.ktx)
+
+    // To use Kotlin annotation processing tool (kapt)
+     kapt("androidx.room:room-compiler:2.6.1")
+//    ksp(libs.androidx.room.compiler)
 
 }

@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.himelz.expensetracker.features.addexpense.AddExpense
-import com.himelz.expensetracker.features.home.ui.screens.HomeScreen
+import com.himelz.expensetracker.features.home.screens.HomeScreen
 import com.himelz.expensetracker.ui.theme.ExpenseTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ExpenseTrackerTheme {
-                AddExpense()
+                HomeScreen()
             }
         }
     }
