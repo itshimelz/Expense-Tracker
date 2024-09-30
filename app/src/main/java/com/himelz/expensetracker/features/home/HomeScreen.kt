@@ -1,4 +1,4 @@
-package com.himelz.expensetracker.features.home.screens
+package com.himelz.expensetracker.features.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,8 +16,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCard
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,19 +41,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.himelz.expensetracker.R
+import com.himelz.expensetracker.Screens
 import com.himelz.expensetracker.data.model.ExpenseEntity
 import com.himelz.expensetracker.ui.theme.Zinc
 import com.himelz.expensetracker.viewmodel.HomeViewModel
 import com.himelz.expensetracker.viewmodel.HomeViewModelFactory
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     val homeViewModel: HomeViewModel =
         HomeViewModelFactory(LocalContext.current).create(HomeViewModel::class.java)
 
     Surface(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding()
     ) {
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
             val (nameRow, card, list, topBar) = createRefs()
@@ -65,7 +75,7 @@ fun HomeScreen() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 64.dp, start = 16.dp, end = 16.dp)
+                    .padding(top = 8.dp, start = 16.dp, end = 16.dp)
                     .constrainAs(nameRow) {
                         top.linkTo(parent.top)
                         start.linkTo(parent.start)
@@ -103,7 +113,7 @@ fun HomeScreen() {
 
             CardItem(
                 modifier = Modifier
-                    .padding(top = 16.dp)
+                    .padding(top = 24.dp)
                     .constrainAs(card) {
                         top.linkTo(nameRow.bottom)
                         start.linkTo(parent.start)
@@ -134,7 +144,7 @@ fun CardItem(modifier: Modifier = Modifier, balance: String, income: String, exp
     Column(
         modifier = modifier
             .padding(16.dp)
-            .height(200.dp)
+            .height(190.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
             .background(Zinc)
@@ -250,10 +260,10 @@ fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, viewModel: Ho
             }
             Spacer(modifier = Modifier.height(4.dp))
         }
-        items(list){ item ->
+        items(list) { item ->
             TransactionItem(
                 title = item.title,
-                date = item.date.toString(),
+                date = item.date,
                 amount = item.amount.toString(),
                 type = item.type,
                 icon = viewModel.getItemIcon(item.title)
@@ -297,9 +307,10 @@ fun TransactionItem(title: String, date: String, amount: String, type: String, i
             )
         }
         Text(
-            text = if (type == "Income") "+ $amount" else "- $amount",
+            text = if (type == "Income") "+ $$amount" else "- $$amount",
             fontSize = 16.sp,
-            color = if (type == "Income") Color.Green else Color.Red,
+            fontWeight = FontWeight.Bold,
+            color = if (type == "Income") Zinc else Color.Red,
             modifier = Modifier.align(alignment = Alignment.CenterVertically)
         )
     }
@@ -312,5 +323,5 @@ fun TransactionItem(title: String, date: String, amount: String, type: String, i
 )
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(rememberNavController())
 }

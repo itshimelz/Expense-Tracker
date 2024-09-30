@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.himelz.expensetracker.R
+import com.himelz.expensetracker.Utils
 import com.himelz.expensetracker.data.ExpenseDatabase
 import com.himelz.expensetracker.data.dao.ExpenseDao
 import com.himelz.expensetracker.data.model.ExpenseEntity
@@ -20,7 +21,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
                 total -= it.amount
             }
         }
-        return "$ $total"
+        return "$ ${Utils.formatToDecimal(total)}"
     }
 
     fun getTotalIncome(list: List<ExpenseEntity>): String {
@@ -31,7 +32,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
 
             }
         }
-        return "$ $total"
+        return "$ ${Utils.formatToDecimal(total)}"
 
     }
 
@@ -44,7 +45,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
             }
 
         }
-        return "$ $total"
+        return "$ ${Utils.formatToDecimal(total)}"
     }
 
     fun getItemIcon(title: String): Int {
@@ -55,6 +56,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
             "Youtube" -> return R.drawable.ic_youtube
             "Upwork" -> return R.drawable.ic_upwork
             "Paypal" -> return R.drawable.ic_paypal
+            "Other" -> return R.drawable.ic_dollar
         }
         return R.drawable.ic_expenses
     }

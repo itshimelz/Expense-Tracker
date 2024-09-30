@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.core.i18n)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,6 +71,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.navigation.compose)
 
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.material.icons.extended)
@@ -80,6 +82,6 @@ dependencies {
 
     // To use Kotlin annotation processing tool (kapt)
      kapt("androidx.room:room-compiler:2.6.1")
-//    ksp(libs.androidx.room.compiler)
+    //    ksp(libs.androidx.room.compiler)
 
 }
